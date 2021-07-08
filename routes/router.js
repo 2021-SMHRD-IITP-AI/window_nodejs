@@ -18,7 +18,7 @@ router.post("/Join", function(request, response){
     conn.query(sql,[user_id, user_pw, user_email, user_name], function(err,row){
         if(!err){
             console.log(user_name+"님이 회원가입 하였습니다.");
-            response.redirect("http://127.0.0.1:5500/project_Login_express/public/Login.html");//로그인전 메인페이지 이동
+            response.redirect("http://127.0.0.1:5501/window_nodejs/public/main.html");//로그인전 메인페이지 이동
         }else{
             console.log("누군가 회원가입에 실패하였습니다.");
             response.redirect("http://127.0.0.1:5500/project_Login_express/public/Join.html");
