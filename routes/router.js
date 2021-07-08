@@ -46,19 +46,19 @@ router.post("/Login", function(request, response){
                     request.session.user = {
                         "name" : name
                     }
-                    response.render("main2",{
-                        name : name
-                    })
                     console.log("로그인 성공");
+                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/main2.html")
                     // 로그인 후 메인페이지 이동
                 }
                 else{
+                    console.log("로그인 실패");
                     response.redirect("http://127.0.0.1:5501/window_nodejs/public/Login.html") //로그인 실패시 로그인창 이동
                     
                 }
             }
         }else{//검색된 id가 없을때
-        response.redirect("http://127.0.0.1:5501/window_nodejs/public/Login.html")// 로그인 실패시 로그인창 이동
+            console.log("로그인 실패");
+            response.redirect("http://127.0.0.1:5501/window_nodejs/public/Login.html")// 로그인 실패시 로그인창 이동
         }
     });
     conn.end();
