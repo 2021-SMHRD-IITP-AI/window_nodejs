@@ -300,3 +300,18 @@ body{
 #btnl,#btnc{
     margin-right: 10px;
 }
+.sebox{
+    font-size: 15px;
+}
+#sebox2{
+    position: relative;
+    top: 20px;
+}
+#sebox3{
+    position: relative;
+    top: 13px;
+}
+#btnli{
+    color: white;
+    background-color: black;
+}
