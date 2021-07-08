@@ -11,6 +11,8 @@ const session = require("express-session");//세션기능 사용
 const mysql_session = require("express-mysql-session");
 //세션저장공간설정(mysql)
 
+app.use(express.static(__dirname + "/public"));
+
 let conn = {
     host : "localhost",
     user : "root",
