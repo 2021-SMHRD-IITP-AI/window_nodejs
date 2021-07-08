@@ -105,11 +105,11 @@ router.post("/PwSelector", function(request, response){//보류
                     response.redirect("http://127.0.0.1:5500/project_Login_express/public/PwUpdate.html")
                 }else{
                     //알럿창으로 다시 입력 하게 하거나 회원가입 창으로 넘어가게 함.
-                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwSelector.html")
+                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwSelectorF.html")
                 }
             }
         }else{
-            response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwSelector.html")
+            response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwSelectorF.html")
         }
     });
     conn.end();
