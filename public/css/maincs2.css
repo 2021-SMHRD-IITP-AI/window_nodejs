@@ -302,15 +302,15 @@ body{
 }
 #bookmark{
     position: relative;
-    top: 15px;
-    left: 10px;
-    width: 7%;
-    height: 4vmin;
+    top: 13px;
+    left: 430px;
+    width: 6%;
+    height: 3.5vmin;
 }
 #link{
     position: relative;
-    top: 15px;
-    left: 10px;
-    width: 7%;
-    height: 4vmin;
+    top: 13px;
+    left: 430px;
+    width: 6%;
+    height: 3.5vmin;
 }

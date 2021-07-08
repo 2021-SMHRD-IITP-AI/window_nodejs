@@ -34,31 +34,25 @@ router.post("/Login", function(request, response){
 
     conn.connect();
 
-    response.writeHead(200, {"Content-type" : "text/html;charset=utf-8"});
-
     let sql = "select * from login where user_id = ?";
 
     conn.query(sql, [user_id], function(err,row){
         if(row.length > 0){
             for(let i = 0 ; i < row.length; i++){
-                let name = row[i].user_name;
                 if(user_pw == row[i].user_pw){ //검색된 ID가 있을 때 비교
-                    request.session.user = {
-                        "name" : name
-                    }
-                    console.log("로그인 성공");
+                    console.log("로그인 성공"+err);
                     response.redirect("http://127.0.0.1:5501/window_nodejs/public/main2.html")
                     // 로그인 후 메인페이지 이동
                 }
                 else{
-                    console.log("로그인 실패");
-                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/Login.html") //로그인 실패시 로그인창 이동
+                    console.log("로그인 실패"+err);
+                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/LoginF.html") //로그인 실패시 로그인창 이동
                     
                 }
             }
         }else{//검색된 id가 없을때
             console.log("로그인 실패");
-            response.redirect("http://127.0.0.1:5501/window_nodejs/public/Login.html")// 로그인 실패시 로그인창 이동
+            response.redirect("http://127.0.0.1:5501/window_nodejs/public/LoginF.html")// 로그인 실패시 로그인창 이동
         }
     });
     conn.end();
