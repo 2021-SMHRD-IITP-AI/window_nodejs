@@ -289,3 +289,10 @@ body{
     font-size: 2vh;
     font-weight: bold;
 }
+#btn{
+    width: 35%;
+    height: 3vmin;
+    position: relative;
+    top: 12px;
+    left: 34px;
+}
