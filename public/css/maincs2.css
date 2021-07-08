@@ -300,3 +300,17 @@ body{
 #btnl,#btnc{
     margin-right: 10px;
 }
+#bookmark{
+    position: relative;
+    top: 15px;
+    left: 10px;
+    width: 7%;
+    height: 4vmin;
+}
+#link{
+    position: relative;
+    top: 15px;
+    left: 10px;
+    width: 7%;
+    height: 4vmin;
+}
