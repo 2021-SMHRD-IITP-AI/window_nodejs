@@ -54,12 +54,12 @@ router.post("/Login", function(request, response){
                     response.redirect("http://127.0.0.1:5501/project_Login_express/public/LoginS.html")// 로그인 후 메인페이지 이동
                 }
                 else{
-                    response.redirect("http://127.0.0.1:5500/0625express/public/ex02LoginF.html") //로그인 실패시 로그인창 이동
+                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/LoginF.html") //로그인 실패시 로그인창 이동
                     
                 }
             }
         }else{//검색된 id가 없을때
-        response.redirect("http://127.0.0.1:5500/0625express/public/ex02LoginF.html")// 로그인 실패시 로그인창 이동
+        response.redirect("http://127.0.0.1:5501/window_nodejs/public/LoginF.html")// 로그인 실패시 로그인창 이동
         }
     });
     conn.end();
