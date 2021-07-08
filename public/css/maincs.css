@@ -290,13 +290,13 @@ body{
     font-weight: bold;
 }
 .btn{
-    width: 35%;
+    width: 25%;
     height: 3vmin;
     position: relative;
     top: 12px;
-    left: 48px;
+    left: 42px;
     
 }
-#btnl{
-    margin-right: 20px;
+#btnl,#btnc{
+    margin-right: 10px;
 }
