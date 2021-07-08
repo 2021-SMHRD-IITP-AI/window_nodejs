@@ -1,0 +1,37 @@
+#logo{
+    position: relative;
+    left: 770px;
+    top: 30px;
+    margin: 70px;
+}
+#mail{
+    font-size: 18px;
+    position: relative;
+    left: 790px;
+}
+#id,#email{
+    border: 3px #7E36B4 solid;
+    margin: 15px;
+    position: relative;
+    left: 770px;
+}
+#pw{
+    position: relative;
+    left: 843px;
+    background-color: #7E36B4;
+    color: white;
+    font-size: 20px;
+    margin: 15px;
+}
+#logo{
+    width: 15%;
+    height: 6.8%;
+}
+#id,#email{
+    width: 18.5%;
+    height: 4vmin;
+}
+#pw{
+    width: 11%;
+    height: 5vmin;
+}

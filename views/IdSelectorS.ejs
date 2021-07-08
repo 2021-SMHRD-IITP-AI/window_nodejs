@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #logo{
+            position: relative;
+            left: 770px;
+            top: 30px;
+            width: 15%;
+            height: 6.8%;
+            margin: 70px;   
+        }
+        #IdSelect{
+            font-size: 18px;
+            position: relative;
+            left: 800px;
+        }
+        #Logingo{
+            position: relative;
+            left: 805px;
+            background-color: #7E36B4;
+            color: white;
+            font-size: 20px;
+            margin: 15px;
+            width: 11%;
+            height: 5vmin;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <img src="../images/로고.png" id="logo">
+    <form action="http://121.147.52.212:3000/IdSelectorS" method="POST">
+        <div>
+            <p id="IdSelect"><%=name%> 님의 아이디는 <%=id%> 입니다. </p>
+        </div>
+    </form>
+    <div>
+        <a href="http://127.0.0.1:5500/project_Login_express/public/Login.html"><Button id="Logingo">로그인 이동</Button></a>
+    </div>
+</body>
+</html>

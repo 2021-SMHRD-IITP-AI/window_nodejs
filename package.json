@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/2021-SMHRD-IITP-AI/window_nodejs#readme",
   "dependencies": {
+    "express-mysql-session": "^2.1.6",
+    "express-session": "^1.17.2",
     "expresss": "0.0.0"
   }
 }

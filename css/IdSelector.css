@@ -1,0 +1,39 @@
+#logo{
+    position: relative;
+    left: 770px;
+    top: 30px;
+    margin: 70px;
+}
+#mail{
+    font-size: 18px;
+    position: relative;
+    left: 777px;
+}
+#email{
+    width: 350px;
+    height: 30px;
+    border: 3px #7E36B4 solid;
+    margin: 5px;
+    position: relative;
+    left: 770px;
+}
+#idselector{
+    position: relative;
+    left: 843px;
+    background-color: #7E36B4;
+    color: white;
+    font-size: 20px;
+    margin: 15px;
+}
+#logo{
+    width: 15%;
+    height: 6.8%;
+}
+#email{
+    width: 18.5%;
+    height: 4vmin;
+}
+#idselector{
+    width: 11%;
+    height: 5vmin;
+}

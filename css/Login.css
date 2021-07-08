@@ -1,0 +1,37 @@
+
+        #logo{
+            position: relative;
+            left: 770px;
+            top: 30px;
+            margin: 70px;
+        }
+        .Login_info{
+            border: 3px #7E36B4 solid;
+            margin: 23px;
+            position: relative;
+            left: 770px;
+        }
+        #login{
+            position: relative;
+            left: 857px;
+            background-color: #7E36B4;
+            color: white;
+            font-size: 20px;
+            margin: 15px;
+        }
+        #Join, #idSelector, #pwSelector{
+            position: relative;
+            left: 864px;
+        }
+        #logo{
+            width: 15%;
+            height: 7%;
+        }
+        .Login_info{
+            width: 18.5%;
+            height: 4vmin;
+        }
+        #login{
+            width: 11%;
+            height: 5vmin;
+        }
