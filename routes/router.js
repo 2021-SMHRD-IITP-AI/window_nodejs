@@ -139,23 +139,4 @@ router.post("/PwUpdate",function(request,response){
     conn.end();
 });
 
-router.get("/Logout", function(request, response){
-
-    //로그인 정보가 없을 때 : undefined
-    //로그인 정보가 있을 때 : object
-
-    response.render("Logout",{
-        user : request.session.user
-    })
-})
-
-router.get("/Login", function(request, response){
-
-    delete request.session.user;
-
-    response.render("Logout",{
-        user : undefined
-    })
-})
-
 module.exports = router;
