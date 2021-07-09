@@ -41,13 +41,13 @@ router.post("/Login", function(request, response){
             for(let i = 0 ; i < row.length; i++){
                 if(user_pw == row[i].user_pw){ //검색된 ID가 있을 때 비교
 
+                    request.session.user = {
+                        "name" : row[i].user_name
+                    }
+                    response.render("main2",{
+                        name : row[i].user_name
+                    })
                     
-
-
-
-
-                    
-                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/main2.html")
                     // 로그인 후 메인페이지 이동
                 }
                 else{

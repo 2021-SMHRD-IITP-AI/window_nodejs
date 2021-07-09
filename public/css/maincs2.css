@@ -314,3 +314,18 @@ body{
     width: 6%;
     height: 3.5vmin;
 }
+#username{
+    position: relative;
+    left: 790px;
+    top: 10px;
+    font-size: 1.8vh;
+}
+#logout{
+    position: relative;
+    left: 850px;
+    bottom: 29px;
+    font-size: 1.8vh;
+    background-color: #fff;
+    color: #7E36B4;
+    border: 0px;
+}
