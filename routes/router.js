@@ -21,7 +21,7 @@ router.post("/Join", function(request, response){
             response.redirect("http://127.0.0.1:5501/window_nodejs/public/main.html");//로그인전 메인페이지 이동
         }else{
             console.log("누군가 회원가입에 실패하였습니다.");
-            response.redirect("http://127.0.0.1:5500/project_Login_express/public/Join.html");
+            response.redirect("http://127.0.0.1:5500/window_nodejs/public/Join.html");
         }
 
     })
@@ -102,7 +102,7 @@ router.post("/PwSelector", function(request, response){//보류
             console.log(err);
             for(let i = 0; i < row.length; i++){
                 if(user_id == row[i].user_id && user_email==row[i].user_email){
-                    response.redirect("http://127.0.0.1:5500/project_Login_express/public/PwUpdate.html")
+                    response.redirect("http://127.0.0.1:5500/window_nodejs/public/PwUpdate.html")
                 }else{
                     //알럿창으로 다시 입력 하게 하거나 회원가입 창으로 넘어가게 함.
                     response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwSelectorF.html")
@@ -124,7 +124,7 @@ router.post("/PwUpdate",function(request,response){
 
     conn.query(sql,[user_pw, user_id] ,function(err, row){
         if(!err){
-        response.redirect("http://127.0.0.1:5500/project_Login_express/public/Login.html")
+        response.redirect("http://127.0.0.1:5500/window_nodejs/public/Login.html")
         }
         else{
             console.log("수정 실패"+err);
