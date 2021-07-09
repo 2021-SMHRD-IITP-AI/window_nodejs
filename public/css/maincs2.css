@@ -316,13 +316,13 @@ body{
 }
 #username{
     position: relative;
-    left: 790px;
+    left: 770px;
     top: 10px;
     font-size: 1.8vh;
 }
 #logout{
     position: relative;
-    left: 868px;
+    left: 848px;
     bottom: 31px;
     font-size: 1.8vh;
     background-color: #fff;
