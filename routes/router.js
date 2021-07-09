@@ -115,6 +115,8 @@ router.post("/PwSelector", function(request, response){//보류
                     response.redirect("http://127.0.0.1:5502/window_nodejs/public/PwSelectorF.html")
                 }
             }
+        }else{
+            response.redirect("http://127.0.0.1:5502/window_nodejs/public/PwSelectorF.html")
         }
     });
     conn.end();
