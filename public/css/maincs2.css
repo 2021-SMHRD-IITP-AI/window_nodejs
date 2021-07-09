@@ -329,7 +329,17 @@ body{
     color: #7E36B4;
     border: 0px;
 }
-#delete{
-    width: 40%;
-    height: 3vmin;
+#tree{
+    width: 7%;
+    height: 2vmin;
+    position: relative;
+    left: 285px;
+    bottom: 10px;
+}
+#p{
+    width: 7%;
+    height: 2vmin;
+    position: relative;
+    left: 275px;
+    bottom: 10px;
 }
