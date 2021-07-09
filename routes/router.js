@@ -21,7 +21,7 @@ router.post("/Join", function(request, response){
             response.redirect("http://127.0.0.1:5501/window_nodejs/public/main.html");//로그인전 메인페이지 이동
         }else{
             console.log("누군가 회원가입에 실패하였습니다.");
-            response.redirect("http://127.0.0.1:5500/window_nodejs/public/Join.html");
+            response.redirect("http://127.0.0.1:5501/window_nodejs/public/Join.html");
         }
 
     })
@@ -40,12 +40,18 @@ router.post("/Login", function(request, response){
         if(row.length > 0){
             for(let i = 0 ; i < row.length; i++){
                 if(user_pw == row[i].user_pw){ //검색된 ID가 있을 때 비교
-                    console.log("로그인 성공"+err);
+
+                    
+
+
+
+
+                    
                     response.redirect("http://127.0.0.1:5501/window_nodejs/public/main2.html")
                     // 로그인 후 메인페이지 이동
                 }
                 else{
-                    console.log("로그인 실패"+err);
+                    console.log("로그인 실패");
                     response.redirect("http://127.0.0.1:5501/window_nodejs/public/LoginF.html") //로그인 실패시 로그인창 이동
                     
                 }
