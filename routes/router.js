@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const conn = require("../config/DB_config.js");
+const conn = require("../config/DB_config");
 const ejs = require("ejs");
 
 
@@ -95,21 +95,20 @@ router.post("/PwSelector", function(request, response){//보류
 
     conn.connect();
 
-    let sql = "select * from login where user_id = ?"// table명 수정
+    let sql = "select * from login where user_id = ?"
 
     conn.query(sql, [user_id], function(err,row){
         if(row.length > 0){
             console.log(err);
             for(let i = 0; i < row.length; i++){
                 if(user_id == row[i].user_id && user_email==row[i].user_email){
-                    response.redirect("http://127.0.0.1:5500/window_nodejs/public/PwUpdate.html")
+
+                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwUpdate.html")
                 }else{
                     //알럿창으로 다시 입력 하게 하거나 회원가입 창으로 넘어가게 함.
                     response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwSelectorF.html")
                 }
             }
-        }else{
-            response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwSelectorF.html")
         }
     });
     conn.end();
@@ -125,7 +124,7 @@ router.post("/PwUpdate",function(request,response){
 
     conn.query(sql,[user_pw, user_id] ,function(err, row){
         if(!err){
-        response.redirect("http://127.0.0.1:5500/window_nodejs/public/Login.html")
+        response.redirect("http://127.0.0.1:5501/window_nodejs/public/Login.html")
         }
         else{
             console.log("수정 실패"+err);
