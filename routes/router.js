@@ -18,10 +18,10 @@ router.post("/Join", function(request, response){
     conn.query(sql,[user_id, user_pw, user_email, user_name], function(err,row){
         if(!err){
             console.log(user_name+"님이 회원가입 하였습니다.");
-            response.redirect("http://127.0.0.1:5501/window_nodejs/public/main.html");//로그인전 메인페이지 이동
+            response.redirect("http://127.0.0.1:5502/window_nodejs/public/main.html");//로그인전 메인페이지 이동
         }else{
             console.log("누군가 회원가입에 실패하였습니다.");
-            response.redirect("http://127.0.0.1:5501/window_nodejs/public/Join.html");
+            response.redirect("http://127.0.0.1:5502/window_nodejs/public/Join.html");
         }
 
     })
@@ -52,13 +52,13 @@ router.post("/Login", function(request, response){
                 }
                 else{
                     console.log("로그인 실패");
-                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/LoginF.html") //로그인 실패시 로그인창 이동
+                    response.redirect("http://127.0.0.1:5502/window_nodejs/public/LoginF.html") //로그인 실패시 로그인창 이동
                     
                 }
             }
         }else{//검색된 id가 없을때
             console.log("로그인 실패");
-            response.redirect("http://127.0.0.1:5501/window_nodejs/public/LoginF.html")// 로그인 실패시 로그인창 이동
+            response.redirect("http://127.0.0.1:5502/window_nodejs/public/LoginF.html")// 로그인 실패시 로그인창 이동
         }
     });
     conn.end();
@@ -83,13 +83,13 @@ router.post("/IdSelector", function(request, response){
                 }
                 else{//해당 메일로 가입한 아이디가 없을경우
                     console.log("해당 메일로 가입한 아이디가 없습니다.");
-                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/IdSelectorF.html")
+                    response.redirect("http://127.0.0.1:5502/window_nodejs/public/IdSelectorF.html")
                 }
             }
         }
         else{
             console.log("해당 메일로 가입한 아이디가 없습니다.");
-            response.redirect("http://127.0.0.1:5501/window_nodejs/public/IdSelectorF.html")
+            response.redirect("http://127.0.0.1:5502/window_nodejs/public/IdSelectorF.html")
         }
     });
     conn.end();
@@ -109,10 +109,10 @@ router.post("/PwSelector", function(request, response){//보류
             for(let i = 0; i < row.length; i++){
                 if(user_id == row[i].user_id && user_email==row[i].user_email){
 
-                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwUpdate.html")
+                    response.redirect("http://127.0.0.1:5502/window_nodejs/public/PwUpdate.html")
                 }else{
                     //알럿창으로 다시 입력 하게 하거나 회원가입 창으로 넘어가게 함.
-                    response.redirect("http://127.0.0.1:5501/window_nodejs/public/PwSelectorF.html")
+                    response.redirect("http://127.0.0.1:5502/window_nodejs/public/PwSelectorF.html")
                 }
             }
         }
@@ -130,7 +130,7 @@ router.post("/PwUpdate",function(request,response){
 
     conn.query(sql,[user_pw, user_id] ,function(err, row){
         if(!err){
-        response.redirect("http://127.0.0.1:5501/window_nodejs/public/Login.html")
+        response.redirect("http://127.0.0.1:5502/window_nodejs/public/Login.html")
         }
         else{
             console.log("수정 실패"+err);

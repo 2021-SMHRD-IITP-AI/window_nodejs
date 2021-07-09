@@ -329,3 +329,7 @@ body{
     color: #7E36B4;
     border: 0px;
 }
+#delete{
+    width: 40%;
+    height: 3vmin;
+}
