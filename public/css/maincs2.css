@@ -331,15 +331,22 @@ body{
 }
 #tree{
     width: 7%;
-    height: 2vmin;
+    height: 2.5vmin;
     position: relative;
-    left: 285px;
+    left: 295px;
     bottom: 10px;
 }
 #p{
     width: 7%;
-    height: 2vmin;
+    height: 2.5vmin;
     position: relative;
-    left: 275px;
+    left: 285px;
+    bottom: 10px;
+}
+#delete{
+    width: 7%;
+    height: 2.5vmin;
+    position: relative;
+    left: 305px;
     bottom: 10px;
 }
