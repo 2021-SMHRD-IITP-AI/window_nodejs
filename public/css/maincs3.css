@@ -330,11 +330,10 @@ body{
 #logout{
     position: relative;
     left: 1200px;
-    
     bottom: 20px;
     font-size: 1.8vh;
     background-color: #fff;
-    color: #7E36B4;
+    color: darkgrey;
     border: 0px;
 }
 #username{
