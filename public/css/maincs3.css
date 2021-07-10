@@ -342,3 +342,14 @@ body{
     bottom: 31px;
     font-size: 1.8vh;
 }
+.btn{
+    width: 25%;
+    height: 6.5vmin;
+    position: relative;
+    top: 12px;
+    left: 42px;
+    
+}
+#btnl,#btnc{
+    margin-right: 10px;
+}
