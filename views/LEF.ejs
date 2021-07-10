@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/maincs.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="Lef" style="width: 100vw; height: 100vh;">
+        <section id="lef_top">
+            <button class="btn" id="btnl">추천 논문</button> <button class="btn" id="btnc">새로운 논문</button>
+            <button class="btn" id="btnr">검색 목록</button>
+        </section>
+        <section id="lef_">
+
+            
+            <%if(in_row != undefined){%>
+            <% for(let i=0;i<in_row.length;i++){ %>
+                <section>
+                    <ul id="lef_resultT">
+                        <li style="margin-left: 0.1%;"><%=in_row[i].category%></li>
+                        <li><%=in_row[i].reg_date%>회</li>
+                        <li><%=in_row[i].citated_count%></li>
+                    </ul>
+                </section>
+
+                <br>
+
+                <section id="name">
+                <div onclick="test1_c(`<%=in_row[i].article_title%>`,'<%=in_row[i].article_id%>')"><%=in_row[i].article_title%></div>
+                </section>
+            <% } %>
+            <% } %>
+        <button onclick="test1_c('a','1')">a</button>
+
+        </section>
+        <form id="aaa" action="http://121.147.52.212:3000/LEF" method="GET">
+        <input type="text" name="ser" id="w" style="display:none;">
+        <input type="submit" value="검색" style="display:none;">
+        </form>
+    </section>
+
+    <script>
+        function search() {
+            document.getElementById('aaa').submit();
+        }
+
+        function sub(k){
+            document.getElementById('w').setAttribute("value",`${k}`);
+        }
+
+        function test1_c(title,num){
+            window.parent.postMessage(`${title}`, '*');
+            window.parent.postMessage(`${num}`, '*');
+        }
+
+
+    </script>
+</body>
+</html>

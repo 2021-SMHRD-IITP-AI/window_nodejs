@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/maincs.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="Mid" style="width: 100vw; height: 100vh;">
+        <section id="mid_top">
+
+        </section>
+
+        <section id="mid_">
+
+
+            <%if(in_row != undefined){%>
+                <% for(let i=0;i<in_row.length;i++){ %>
+                <section id="mid_title">
+                    <div><%=in_row[0].article_title%></div>
+                </section>
+
+                <section>
+                    <ul id="mid_category">
+                        <li style="margin-left: 0.1%;"><%=in_row[0].category%></li>
+                        <li><%=in_row[0].author_name%></li>
+                        <li><%=in_row[0].reg_date%> 년</li>
+                        <li><%=in_row[0].citated_count%> 회</li>
+                    </ul>
+                </section>
+
+                <section class="in">
+                    <div id="mid_detail">초록</div>
+                    <img src="../images/img_bar.png" alt="" id="mid_bar">
+
+                    <p id="mid_green"><%=in_row[0].abstract%></p>
+                </section>
+                <br>
+
+                <section class="in">
+                    <div id="mid_detail">키워드</div>
+
+                    <!-- 이거 하이퍼링크 되는애로 고치면 좋은데 -->
+                    <p id="mid_category2"><%=in_row[0].keyword%></p>
+                </section>
+                <br>
+                <section class="in">
+                    <div id="mid_detail">인용구조</div>
+                    <img src="../images/img_bar.png" alt="" id="mid_bar">
+                    <section>
+                        여기에 인용구조 띄워줄꺼임
+                    </section>
+                </section>
+            <%}%>
+            <% } %>
+
+        </section>
+    </section>
+
+
+
+
+    <form id="bbb" action="http://121.147.52.212:3000/MID" method="GET">
+    <input type="text" name="det" id="det" style="display: none;">
+    <input type="text" name="den" id="den" style="display: none;">
+    <input type="submit" value="검색" style="display: none;">
+    </form>
+
+
+<script>
+    function search() {
+        document.getElementById('bbb').submit();
+    }
+
+    function sub(k,kk){
+        document.getElementById('det').setAttribute("value",`${k}`);
+        document.getElementById('den').setAttribute("value",`${kk}`);
+    }
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

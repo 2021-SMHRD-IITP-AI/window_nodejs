@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/maincs3.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <section class="Top" id="top">
+        <img src="images/로고.png" id="logo" class="Top">
+
+        <form action="http://121.147.52.212:3000/LEF" method="GET" target="ifLef">
+        <input type="text" id="top_search" class="Top" name="top_se">
+        <input type="button" id="top_searchBtn" value="search" class="Top" onclick="test()">
+        </form>
+
+
+        <section>
+            <section id="top_searchData" class="Top">검색 기록</section>
+            <section id="top_searchData" class="Top" style="color: #7E36B4; font-weight:bolder; margin-left: 0%; padding-right: 1%; width: auto; font-size: 2.2vh;">▽ </section>
+        </section>
+
+        <section class="Top" id="top_loginJoin">
+            <p id="username"><%=name%> 님  </p><a id="logout" href="http://127.0.0.1:5502/window_nodejs/public/main.html" style="text-decoration:none">로그아웃</a>
+        </section>
+    
+    </section>
+
+    <section class="Main">
+        <section class="Lef">
+            <iframe id="ifLef" name="ifLef" src="http://121.147.52.212:3000/LEF" frameborder="0"></iframe>
+        </section>
+
+
+        <section class="Mid">
+            <iframe id="ifMid" src="http://121.147.52.212:3000/MID" frameborder="0"></iframe>
+        </section>
+
+
+        <section class="Rei">
+            <iframe id="ifRei" src="http://121.147.52.212:3000/REI" frameborder="0"></iframe>
+        </section>
+    </section>
+
+  
+    <script>
+
+        /**********LEF**********/ 
+
+        var iframe = document.getElementById('ifLef').contentWindow; 
+
+        function test() {
+
+            let k = document.getElementById("top_search").value;
+
+            iframe.sub(`${k}`);
+            iframe.search();
+            // iframe.location.reload();
+            
+        }
+
+        /**********MID**********/ 
+
+        let check=0;
+        let he="";
+
+        window.addEventListener('message', handleDocHeightMsg, false); 
+
+        function handleDocHeightMsg(eventObj) { 
+
+            if(check == 0){
+                he = eventObj.data;
+                check = 1;
+            }else{
+                test_m(`${he}`,`${eventObj.data}`);
+            }
+            
+        }
+
+        var iframe_m = document.getElementById('ifMid').contentWindow; 
+
+        function test_m(k,kk) {
+
+            iframe_m.sub(k,kk);
+            iframe_m.search();
+
+        }
+
+
+        // const searchb = document.querySelector('#top_searchData');
+        // searchb.addEventListener('click',function(){
+        //     let k = parent.document.getElementById("top_search").value;
+        //     iframe.sub(`${k}`);
+        //     iframe.search();
+        //     iframe.location.reload();
+        // });
+        // let st = document.getElementById("top_search").value;
+
+        // searchv = function(){
+        //     parent.document.getElementById("top_search").value;
+        //     st = ifLef  
+        // }
+
+    </script>
+</body>
+</html>

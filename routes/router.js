@@ -44,7 +44,7 @@ router.post("/Login", function(request, response){
                     request.session.user = {
                         "name" : row[i].user_name
                     }
-                    response.render("main2",{
+                    response.render("ma",{
                         name : row[i].user_name
                     })
                     
@@ -140,5 +140,54 @@ router.post("/PwUpdate",function(request,response){
     })
     conn.end();
 });
+
+router.get("/main", function(request, response){
+    response.render("ma", {
+        
+    });
+})
+
+router.get("/LEF", function(request, response){
+    let ser = request.query.ser;
+    conn.connect(); //mysql 연결
+    let keyword = "%" + ser + "%";
+
+    let sql = "select * from article where article_title like ?";
+    conn.query(sql, [keyword], function (err, row) {
+        console.log(row);
+        response.render("LEF", {
+            in_row : row
+        })
+    })
+
+    conn.end();
+
+})
+
+router.get("/MID", function(request, response){
+    let title = request.query.det;
+    let num = request.query.den;
+    conn.connect(); //mysql 연결
+    console.log(title);
+    console.log(num);
+
+    let sql = "select * from article where article_title=? and article_id=?";
+    conn.query(sql, [title, num], function (err, row) {
+
+        response.render("MID", {
+            in_row : row
+        })
+    })
+
+    conn.end();
+})
+
+router.get("/REI", function(request, response){
+    response.render("REI", {
+
+    });
+})
+
+module.exports = router;
 
 module.exports = router;
