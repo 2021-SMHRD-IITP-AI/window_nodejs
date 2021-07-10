@@ -331,7 +331,7 @@ body{
 #logout{
     position: relative;
     left: 1240px;
-    bottom: 20px;
+    bottom: 23px;
     font-size: 1.8vh;
     background-color: #fff;
     color: darkgrey;
@@ -340,7 +340,7 @@ body{
 #username{
     position: relative;
     left: 1150px;
-    top: 21px;
+    top: 18px;
     font-size: 1.8vh;
 }
 #in{
