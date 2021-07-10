@@ -8,7 +8,7 @@
     margin-bottom: 5vmin;
 }
 
-.JoinInfo, #idselect, #mailselect, .Login_info{
+.JoinInfo, #email, #id, .Login_info{
     width: 45vmin;
     height: 4vmin;
     font-size: 2.5vmin;
@@ -18,7 +18,7 @@
     margin: 5px;
 }
 
-#idselector, #pwselector, #join{
+#idselector, #pws, #join, #login{
     margin-top: 1vmin;
     width: 46.5vmin;
     height: 5.2vmin;
@@ -27,11 +27,14 @@
     font-size: 20px;
     margin: 15px;
 }
-#login{
+
+#mail{
     position: relative;
-    left: 857px;
-    background-color: #7E36B4;
-    color: white;
-    font-size: 20px;
-    margin: 15px;
+    right: 148px;
+    font-size: 18px;
+}
+#a{
+    position: relative;
+    right: 119px;
+    font-size: 18px;
 }

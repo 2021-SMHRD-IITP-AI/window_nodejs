@@ -141,12 +141,6 @@ router.post("/PwUpdate",function(request,response){
     conn.end();
 });
 
-router.get("/main", function(request, response){
-    response.render("ma", {
-        
-    });
-})
-
 router.get("/LEF", function(request, response){
     let ser = request.query.ser;
     conn.connect(); //mysql 연결
