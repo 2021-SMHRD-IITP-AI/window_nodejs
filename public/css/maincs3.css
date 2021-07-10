@@ -329,8 +329,9 @@ body{
 }
 #logout{
     position: relative;
-    left: 1791px;
-    bottom: 72px;
+    left: 1200px;
+    
+    bottom: 20px;
     font-size: 1.8vh;
     background-color: #fff;
     color: #7E36B4;
@@ -338,18 +339,7 @@ body{
 }
 #username{
     position: relative;
-    left: 1530px;
-    bottom: 31px;
+    left: 1110px;
+    top: 21px;
     font-size: 1.8vh;
-}
-.btn{
-    width: 25%;
-    height: 6.5vmin;
-    position: relative;
-    top: 12px;
-    left: 42px;
-    
-}
-#btnl,#btnc{
-    margin-right: 10px;
 }
