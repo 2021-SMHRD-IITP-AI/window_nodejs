@@ -18,7 +18,7 @@
     margin: 5px;
 }
 
-#idselector, #pws, #join, #login{
+#idselector, #pws, #join, #login, #Logingo{
     margin-top: 1vmin;
     width: 46.5vmin;
     height: 5.2vmin;
@@ -37,4 +37,9 @@
     position: relative;
     right: 119px;
     font-size: 18px;
+}
+#IdSelect{
+    font-size: 18px;
+    position: relative;
+    
 }
