@@ -297,6 +297,7 @@ body{
     color: #3d4449;
     font-size: 2vh;
     font-weight: bold;
+    margin-top: 5%;
 }
 
 
@@ -329,7 +330,7 @@ body{
 }
 #logout{
     position: relative;
-    left: 1200px;
+    left: 1240px;
     bottom: 20px;
     font-size: 1.8vh;
     background-color: #fff;
@@ -338,7 +339,7 @@ body{
 }
 #username{
     position: relative;
-    left: 1110px;
+    left: 1150px;
     top: 21px;
     font-size: 1.8vh;
 }
