@@ -108,6 +108,12 @@ router.post("/PwSelector", function(request, response){//보류
             console.log(err);
             for(let i = 0; i < row.length; i++){
                 if(user_id == row[i].user_id && user_email==row[i].user_email){
+                    // request.session.user={
+                    //     "id" : row[i].user_id
+                    // }
+                    // response.render("PwUpdate",{
+                    //     id : row[i].user_id
+                    // })
 
                     response.redirect("http://127.0.0.1:5502/window_nodejs/public/PwUpdate.html")
                 }else{

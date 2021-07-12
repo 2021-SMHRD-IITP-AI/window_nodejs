@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #body{
+            text-align: center;
+            margin-top: 20vmin;
+        }
+        #logo{
+            height: 18vmin;
+            margin-bottom: 5vmin;
+        }
+        #pw,#id{
+            width: 45vmin;
+            height: 4vmin;
+            font-size: 2.5vmin;
+            margin: 1.5%;
+            padding: 0.5%;
+            border: 3px #7E36B4 solid;
+            margin: 5px;
+        }
+        #text{
+            font-size: 18px;
+            
+        }
+        #button{
+            margin-top: 1vmin;
+            width: 46.5vmin;
+            height: 5.2vmin;
+            background-color: #7E36B4;
+            color: white;
+            font-size: 20px;
+            margin: 15px;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body id="body">
+    <img src="images/로고.png" id="logo">
+
+<form action="http://121.147.52.212:3000/PwUpdate" method="POST">
+    <div>
+        <p>비밀번호 변경할 아이디 : <%=id%></p>
+    </div>
+    <div>
+        <input type="password" id="pw" name="pw" placeholder="새 비밀번호">
+    </div>
+    <div>
+        <input type="submit" id="button" value="비밀번호 변경">
+    </div>
+</form>
+</body>
+</html>
