@@ -155,7 +155,7 @@ router.get("/main", function(request, response){
     let sql = "select * from article where article_title like ?";
     conn.query(sql, [keyword], function (err, row) {
         console.log(row);
-        response.render("ma", {
+        response.render("ma2", {
             in_row : row
         })
     })
