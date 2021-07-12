@@ -346,3 +346,15 @@ body{
 #in{
     margin-top: 1.5%;
 }
+#map{
+    width: 5%;
+    height: 3vmin;
+    position: relative;
+    left: 410px;
+}
+#delete{
+    width: 5%;
+    height: 3vmin;
+    position: relative;
+    left: 420px;
+}

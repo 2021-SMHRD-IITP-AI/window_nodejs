@@ -21,7 +21,7 @@
             let k = document.getElementById("top_search").value;
             $.ajax({
                 type :"get" ,
-                url : "http://121.147.52.212:3000/sealist",
+                url : "http://121.147.52.212:3000//sealist",
                 data : {sea : k},
                 dataType : 'JSON',
                 success : function(data) {
@@ -67,7 +67,7 @@
             </section> -->
     
             <section class="Top" id="top_loginJoin">
-                <p id="username"><%=name%> 님  </p><a id="logout" href="http://127.0.0.1:5502/window_nodejs/public/main.html" style="text-decoration:none">로그아웃</a>
+                <p id="username"><%=name%> 님  </p><a id="logout" href="http://121.147.52.212:3000/Logout" style="text-decoration:none">로그아웃</a>
         </section>
             </section>
         
