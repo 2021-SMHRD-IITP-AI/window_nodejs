@@ -5,42 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        #body{
+            text-align: center;
+            margin-top: 20vmin;
+        }
         #logo{
-            position: relative;
-            left: 770px;
-            top: 30px;
-            width: 15%;
-            height: 6.8%;
-            margin: 70px; 
+            height: 18vmin;
+            margin-bottom: 5vmin;
         }
         #pw,#id{
-            border: 3px #7E36B4 solid;
-            margin: 15px;
-            position: relative;
-            left: 765px;
-            width: 18.5%;
+            width: 45vmin;
             height: 4vmin;
+            font-size: 2.5vmin;
+            margin: 1.5%;
+            padding: 0.5%;
+            border: 3px #7E36B4 solid;
+            margin: 5px;
         }
         #text{
             font-size: 18px;
-            position: relative;
-            left: 781px;
+            
         }
         #button{
-            position: relative;
-            left: 843px;
+            margin-top: 1vmin;
+            width: 46.5vmin;
+            height: 5.2vmin;
             background-color: #7E36B4;
             color: white;
             font-size: 20px;
             margin: 15px;
-            width: 11%;
-            height: 5vmin;
         }
 
     </style>
     <title>Document</title>
 </head>
-<body>
+<body id="body">
     <img src="images/로고.png" id="logo">
 
 <form action="http://121.147.52.212:3000/PwUpdate" method="POST">
