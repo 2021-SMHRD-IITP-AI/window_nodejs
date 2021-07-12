@@ -17,42 +17,48 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script type="text/javascript">
 
-               
+            function ajaxCall() {
+            let k = document.getElementById("top_search").value;
+            $.ajax({
+                type :"get" ,
+                url : "http://121.147.52.212:3000/sealist",
+                data : {sea : k},
+                dataType : 'JSON',
+                success : function(data) {
+                    let Le = document.getElementById("lef_");
 
-               function ajaxCall() {
-   
-                let k = document.getElementById("top_search").value;
+                    if(data != ""){
+                        let plz="";
+                        let alll="";
 
-                  $.ajax({
-                     type :"get" ,
-                     url : "http://121.147.52.212:3000/sealist",
-                     data : {sea : k},
-                     dataType : 'JSON',
-                     success : function(data) {
-                        // alert(data[0]);
-                        let Le = document.getElementById("lef_");
-                        // Le.innerHTML=`${data[0].article_title}`;
+                        for(let i=0;i<data.length;i++){
 
+                            alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].link}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                            plz += `<section><ul id="lef_resultT"><li style="margin-left: 0.1%;">${data[i].category}</li><li>${data[i].reg_date}회</li><li>${data[i].citated_count}</li></ul></section><br><section id="name"><div onclick="test1_c(${alll})">${data[i].article_title}</div></section>`;
 
-                        if(data != ""){
-                            let plz="";
-                            for(let i=0;i<data.length;i++){
-                                plz += `<section><ul id="lef_resultT"><li style="margin-left: 0.1%;">${data[i].category}</li><li>${data[i].reg_date}회</li><li>${data[i].citated_count}</li></ul></section><br><section id="name"><div onclick="test1_c(${data[i]})">${data[i].article_title}</div></section>`;
-                            };
-                            alert(plz+"");
-                            Le.innerHTML=(plz+"");
-                        }
+                        };
 
-                     },
-                     error : function() {
-            
-                     }
-                  });
-                  
-               }
-            
-            </script>
+                        Le.innerHTML=(plz+"");
+                    }
+                },
+                error : function() {
+                }
+            });
+        }
 
+    </script>
+
+    <script>
+
+        function test1_c(a,b,c,d,e,f,g,h,i){
+            let Mi = document.getElementById("mid_");
+
+            let plz = "";
+            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${c}</li><li>${d} 년</li><li>${e} 회</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section>여기에 인용구조 띄워줄꺼임</section></section>`;
+
+            Mi.innerHTML=(plz+"");
+        }
+    </script>
             <!-- <label for="top_searchData">-</label> -->
             <!-- 로그인 후 페이지 -->
             <!-- <section>
