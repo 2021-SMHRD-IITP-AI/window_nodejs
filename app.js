@@ -14,8 +14,8 @@ const mysql_session = require("express-mysql-session");
 app.use(express.static(__dirname + "/public"));
 
 let conn = {
-    host : "222.102.104.70",
-    user : "smhrd",
+    host : "localhost",
+    user : "root",
     password : "1234",
     port : "3306",
     database : "nodejs_db"

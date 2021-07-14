@@ -358,3 +358,11 @@ body{
     position: relative;
     left: 420px;
 }
+#l_cited, #stn, #r_cition{
+    width: 33%;
+    float: left;
+}
+
+#c_list{
+    list-style-type:none;
+}
