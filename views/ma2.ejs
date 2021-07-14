@@ -338,6 +338,17 @@
                 }
             </script> -->
 
+    <script>
+
+        function test1_c(a,b,c,d,e,f,g,h,i){
+            let Mi = document.getElementById("mid_");
+
+            let plz = "";
+            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${c}</li><li>${d} 년</li><li>${e} 회</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section>여기에 인용구조 띄워줄꺼임</section></section>`;
+
+            Mi.innerHTML=(plz+"");
+        }
+    </script>
             <!-- <label for="top_searchData">-</label> -->
             <!-- 로그인 후 페이지 -->
             <!-- <section>
@@ -346,7 +357,11 @@
             </section> -->
     
             <section class="Top" id="top_loginJoin">
+<<<<<<< HEAD
                 <p id="username"><%=name%> 님  </p><a id="logout" href="http://127.0.0.1:5500/public/main.html" style="text-decoration:none">로그아웃</a>
+=======
+                <p id="username"><%=name%> 님  </p><a id="logout" href="http://121.147.52.212:3000/Logout" style="text-decoration:none">로그아웃</a>
+>>>>>>> 4a8c109759f4a3de67a4af6ef4ac704cc7ba4de9
         </section>
             </section>
         

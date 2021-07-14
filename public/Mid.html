@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/maincs.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="Mid" style="width: 100vw; height: 100vh;">
+        <section id="mid_top">
+
+        </section>
+
+        <section id="mid_">
+
+                <section id="mid_title" class="m_t">
+                    <div style="width: auto;">제목
+                    
+                        <input type="button" onclick="openPopup()" id="top_join"value="하이퍼링크" style="margin-right: 2%;" >
+                        <input type="button" name="" id="top_login" value="  |  ">
+                        <input type="button" onclick="" id="top_login" onclick="location.href='http://127.0.0.1:5500/public/Login.html'" value="북마크">
+                    </div>
+                </section>
+
+                <section>
+                    <ul id="mid_category">
+                        <li style="margin-left: 0.1%;">카테고리</li>
+                        <li>저자이름</li>
+                        <li>년도</li>
+                        <li>인용횟수</li>
+                    </ul>
+                </section>
+
+                <section class="in">
+                    <div id="mid_detail">초록</div>
+                    <img src="../images/img_bar.png" alt="" id="mid_bar">
+
+                    <p id="mid_green">초록들어감</p>
+                </section>
+                <br>
+
+                <section class="in">
+                    <div id="mid_detail">키워드</div>
+
+                    <!-- 이거 하이퍼링크 되는애로 고치면 좋은데 -->
+                    <p id="mid_category2">키워드들어감</p>
+                </section>
+                <br>
+                <section class="in">
+                    <div id="mid_detail">인용구조</div>
+                    <img src="../images/img_bar.png" alt="" id="mid_bar">
+                    <section>
+                        여기에 인용구조 띄워줄꺼임
+                    </section>
+                </section>
+
+
+        </section>
+    </section>
+
+    <script>
+        function openPopup(){
+            window.open(`http://222.102.104.85:3000/mark?id=${id}`, "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=700, height=700, left=0, top=0" );
+        }
+    </script>
+    
+
+</body>
+</html>

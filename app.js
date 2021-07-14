@@ -21,6 +21,7 @@ let conn = {
     database : "nodejs_db"
 }
 
+
 let sessionSave = new mysql_session(conn);
 //세션저장공간설정 기능을 사용
 

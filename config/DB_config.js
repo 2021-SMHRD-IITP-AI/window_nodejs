@@ -9,4 +9,12 @@ const conn = mysql.createConnection({
     database : "nodejs_db"
 });//my sql 정보입력
 
+// const conn = mysql.createConnection({
+//         host : "222.102.104.70",
+//         user : "smhrd",
+//         password : "1234",
+//         port : "3306",
+//         database : "nodejs_db"
+//     });
+
 module.exports = conn;
