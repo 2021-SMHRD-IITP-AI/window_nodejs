@@ -159,7 +159,7 @@ router.get("/main", function(request, response){
     let sql = "select * from article where article_title like ?";
     conn.query(sql, [keyword], function (err, row) {
         console.log(row);
-        response.render("ma", {
+        response.render("ma2", {
             in_row : row
         })
     })
@@ -180,6 +180,28 @@ router.get("/sealist", function(request, response){
         response.send(row);
     })
 
+    let sql2 = "insert into login values(?, ?, ?, ?, now())";
+    
+    conn.query(sql2,[user_id, user_pw, user_email, user_name], function(err,row){
+        if(!err){
+            console.log(user_name+"님이 회원가입 하였습니다.");
+            response.redirect("http://222.102.104.85:5500/public/main.html");//로그인전 메인페이지 이동
+        }else{
+            console.log("누군가 회원가입에 실패하였습니다.");
+            response.redirect("http://222.102.104.85:5500/public/Join.html");
+        }
+
+    })
+
+    for(let temp = 1; temp<4; temp++){
+        let temp2 = ("폴더"+temp);
+        console.log(temp2);
+        let sql1 = "insert into folder values (?,?,?);"
+        conn.query(sql1,[user_id, temp, temp2], function(err,row){
+            console.log(user_id+temp+temp2+" ");
+        })
+        }
+    conn.end();
 })
 
 router.get("/LEF", function(request, response){

@@ -14,12 +14,13 @@ const mysql_session = require("express-mysql-session");
 app.use(express.static(__dirname + "/public"));
 
 let conn = {
-    host : "localhost",
-    user : "root",
+    host : "222.102.104.70",
+    user : "smhrd",
     password : "1234",
     port : "3306",
     database : "nodejs_db"
 }
+
 
 let sessionSave = new mysql_session(conn);
 //세션저장공간설정 기능을 사용
