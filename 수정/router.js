@@ -108,14 +108,14 @@ router.post("/PwSelector", function(request, response){//보류
             console.log(err);
             for(let i = 0; i < row.length; i++){
                 if(user_id == row[i].user_id && user_email==row[i].user_email){
-                    request.session.user ={
-                        "id" : row[i].user_id
-                    }
-                    response.render("PwUpdate",{
-                        id : row[i].user_id
-                    })
+                    // request.session.user={
+                    //     "id" : row[i].user_id
+                    // }
+                    // response.render("PwUpdate",{
+                    //     id : row[i].user_id
+                    // })
 
-                    // response.redirect("http://127.0.0.1:5502/window_nodejs/public/PwUpdate.html")
+                    response.redirect("http://127.0.0.1:5500/public/PwUpdate.html")
                 }else{
                     //알럿창으로 다시 입력 하게 하거나 회원가입 창으로 넘어가게 함.
                     response.redirect("http://127.0.0.1:5500/public/PwSelectorF.html")
@@ -129,22 +129,15 @@ router.post("/PwSelector", function(request, response){//보류
 })
 
 router.post("/PwUpdate",function(request,response){
-    let user_id = request.session.user
+    let user_id = request.body.id;
     let user_pw = request.body.pw;
-
-    console.log(user_id.id);
-    
-    console.log(user_pw);
 
     conn.connect();//mysql연결
 
     let sql ="update login set user_pw = ? where user_id = ?";
 
-    conn.query(sql,[user_pw, user_id.id] ,function(err, row){
+    conn.query(sql,[user_pw, user_id] ,function(err, row){
         if(!err){
-            request.session.destroy(function(){
-                request.session;
-            })
         response.redirect("http://127.0.0.1:5500/public/Login.html")
         }
         else{

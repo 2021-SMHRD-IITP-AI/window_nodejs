@@ -307,4 +307,15 @@ body{
     color: white;
     background-color: black;
 }
-
+#map{
+    width: 5%;
+    height: 3vmin;
+    position: relative;
+    left: 410px;
+}
+#delete{
+    width: 5%;
+    height: 3vmin;
+    position: relative;
+    left: 420px;
+}
