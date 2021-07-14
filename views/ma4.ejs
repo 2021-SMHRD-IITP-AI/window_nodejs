@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/maincs3.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- <form action="" method="GET"> -->
+        <section class="Top" id="top">
+            <img src="images/로고.png" id="logo" class="Top">
+            <input type="search" id="top_search" class="Top">
+            <input type="button" id="top_searchBtn" value="search" class="Top" onclick="ajaxCall()">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script type="text/javascript">
+
+                function ajaxCall() {
+                    let k = document.getElementById("top_search").value;
+                    $.ajax({
+                        type :"get" ,
+                        url : "http://222.102.104.70:3000/sealist",
+                        data : {sea : k},
+                        dataType : 'JSON',
+                        success : function(data) {
+                            let Le = document.getElementById("lef_");
+        
+                            if(data != ""){
+                                let plz="";
+                                let alll="";
+        
+                                for(let i=0;i<data.length;i++){
+        
+                                    alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                    plz += `<section><ul id="lef_resultT"><li style="margin-left: 0.1%;">${data[i].category}</li><li>${data[i].reg_date}회</li><li>${data[i].citated_count}</li></ul></section><br><section id="name"><div onclick="test1_c(${alll})">${data[i].article_title}</div></section>`;
+        
+                                };
+        
+                                Le.innerHTML=(plz+"");
+                            }
+                        },
+                        error : function() {
+                        }
+                    });
+                }
+        
+            </script>
+        
+            <script>
+                
+                function test1_c(a,b,c,d,e,f,g,h,i){
+                    let cit_li="";
+                    let cited_li = "";
+                    let alll="";
+                    
+                    $.ajax({
+                        type :"get" ,
+                        url : "http://222.102.104.70:3000/cit_list",
+                        data : {sea : b},
+                        dataType : 'JSON',
+                        success : function(data) { 
+                            
+                            if(data != ""){
+        
+                                for(let i=0;i<data.length;i++){
+        
+                                    alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                    cit_li += `<li onclick="test2_c(${alll})">${data[i].article_title}</li><hr>`;
+                                    // console.log(cit_li);
+                                    console.log(alll)
+                                };
+
+                                $.ajax({
+                                    type :"get" ,
+                                    url : "http://222.102.104.70:3000/cited_list",
+                                    data : {sea : b},
+                                    dataType : 'JSON',
+                                    success : function(data) { 
+                                        
+                                        if(data != ""){
+                    
+                                            for(let i=0;i<data.length;i++){
+                    
+                                                alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                                cited_li += `<li onclick="test2_c(${alll})">${data[i].article_title}</li><hr>`;
+                                                // console.log(cit_li);
+                                                console.log(alll)
+                                            };
+                                            let Mi = document.getElementById("mid_");
+
+                                            let plz = "";
+                                            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited"><ul class="c_list">${cited_li}</ul></section><section id="stn">${a}</section><section id="r_cition"><ul class="c_list">${cit_li}</ul></section></section></section>`;
+
+                                            Mi.innerHTML=(plz+"");
+                    
+                                        } else {
+                                            for(let i=0;i<data.length;i++){
+                    
+                                                alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                                cited_li += `<li onclick="test2_c(${alll})">${data[i].article_title}</li><hr>`;
+                                                // console.log(cit_li);
+                                                console.log(alll)
+                                            };
+                                            let Mi = document.getElementById("mid_");
+
+                                            let plz = "";
+                                            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited"><ul class="c_list">${cited_li}</ul></section><section id="stn">${a}</section><section id="r_cition"><ul class="c_list">${cit_li}</ul></section></section></section>`;
+
+                                            Mi.innerHTML=(plz+"");
+                                        }
+                                    },
+                                    error : function() {
+                                    }
+                                });
+                                // let Mi = document.getElementById("mid_");
+
+                                // let plz = "";
+                                // plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited">${cited_li}</section><section id="stn">${a}</section><section id="r_cition"><ul id="c_list">${cit_li}</ul></section></section></section>`;
+
+                                // Mi.innerHTML=(plz+"");
+        
+                            } else {
+                                for(let i=0;i<data.length;i++){
+        
+                                    alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                    cit_li += `<li onclick="test2_c(${alll})">${data[i].article_title}</li><hr>`;
+                                    // console.log(cit_li);
+                                    console.log(alll)
+                                };
+
+                                $.ajax({
+                                    type :"get" ,
+                                    url : "http://222.102.104.70:3000/cited_list",
+                                    data : {sea : b},
+                                    dataType : 'JSON',
+                                    success : function(data) { 
+                                        
+                                        if(data != ""){
+                    
+                                            for(let i=0;i<data.length;i++){
+                    
+                                                alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                                cited_li += `<li onclick="test2_c(${alll})">${data[i].article_title}</li><hr>`;
+                                                // console.log(cit_li);
+                                                console.log(alll)
+                                            };
+                                            let Mi = document.getElementById("mid_");
+
+                                            let plz = "";
+                                            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited"><ul class="c_list">${cited_li}</ul></section><section id="stn">${a}</section><section id="r_cition"><ul class="c_list">${cit_li}</ul></section></section></section>`;
+
+                                            Mi.innerHTML=(plz+"");
+                    
+                                        } else {
+                                            for(let i=0;i<data.length;i++){
+                    
+                                                alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                                cited_li += `<li onclick="test2_c(${alll})">${data[i].article_title}</li><hr>`;
+                                                // console.log(cit_li);
+                                                console.log(alll)
+                                            };
+                                            let Mi = document.getElementById("mid_");
+
+                                            let plz = "";
+                                            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited"><ul class="c_list">${cited_li}</ul></section><section id="stn">${a}</section><section id="r_cition"><ul class="c_list">${cit_li}</ul></section></section></section>`;
+
+                                            Mi.innerHTML=(plz+"");
+                                        }
+                                    },
+                                    error : function() {
+                                    }
+                                });
+
+                                // let Mi = document.getElementById("mid_");
+
+                                // let plz = "";
+                                // plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited">1</section><section id="stn">${a}</section><section id="r_cition"><ul id="c_list">${cit_li}</ul></section></section></section>`;
+
+                                // Mi.innerHTML=(plz+"");
+                            }
+                        },
+                        error : function() {
+                        }
+                    });
+                    
+                }
+
+            </script>
+
+            <script>
+                            
+                function test2_c(a,b,c,d,e,f,g,h,i){
+                    let cit_li="";
+                    let cited_li = "";
+                    let alll="";
+                    $.ajax({
+                        type :"get" ,
+                        url : "http://222.102.104.70:3000/cit_list",
+                        data : {sea : b},
+                        dataType : 'JSON',
+                        success : function(data) {
+                            if(data != ""){
+                                
+                                for(let i=0;i<data.length;i++){
+
+                                    alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                    cit_li += `<li onclick="test1_c(${alll})">${data[i].article_title}</li><hr>`;
+                                    // console.log(cit_li);
+                                };
+
+                                $.ajax({
+                                    type :"get" ,
+                                    url : "http://222.102.104.70:3000/cited_list",
+                                    data : {sea : b},
+                                    dataType : 'JSON',
+                                    success : function(data) { 
+                                        
+                                        if(data != ""){
+                    
+                                            for(let i=0;i<data.length;i++){
+                    
+                                                alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                                cited_li += `<li onclick="test1_c(${alll})">${data[i].article_title}</li><hr>`;
+                                                // console.log(cit_li);
+                                                console.log(alll)
+                                            };
+                                            let Mi = document.getElementById("mid_");
+
+                                            let plz = "";
+                                            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited"><ul class="c_list">${cited_li}</ul></section><section id="stn">${a}</section><section id="r_cition"><ul class="c_list">${cit_li}</ul></section></section></section>`;
+
+                                            Mi.innerHTML=(plz+"");
+                    
+                                        } else {
+                                            for(let i=0;i<data.length;i++){
+                    
+                                                alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                                cited_li += `<li onclick="test1_c(${alll})">${data[i].article_title}</li><hr>`;
+                                                // console.log(cit_li);
+                                                console.log(alll)
+                                            };
+                                            let Mi = document.getElementById("mid_");
+
+                                            let plz = "";
+                                            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited"><ul class="c_list">${cited_li}</ul></section><section id="stn">${a}</section><section id="r_cition"><ul class="c_list">${cit_li}</ul></section></section></section>`;
+
+                                            Mi.innerHTML=(plz+"");
+                                        }
+                                    },
+                                    error : function() {
+                                    }
+                                });
+
+                                // let Mi = document.getElementById("mid_");
+
+                                // let plz = "";
+                                // plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="stn">${a}</section><section id="r_cition"><ul id="c_list">${cit_li}</ul></section></section></section>`;
+
+                                // Mi.innerHTML=(plz+"");
+
+                            } else{
+                                for(let i=0;i<data.length;i++){
+
+                                    alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                    cit_li += `<li onclick="test1_c(${alll})">${data[i].article_title}</li><hr>`;
+                                    // console.log(cit_li);
+                                };
+                                $.ajax({
+                                    type :"get" ,
+                                    url : "http://222.102.104.70:3000/cited_list",
+                                    data : {sea : b},
+                                    dataType : 'JSON',
+                                    success : function(data) { 
+                                        
+                                        if(data != ""){
+                    
+                                            for(let i=0;i<data.length;i++){
+                    
+                                                alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                                cited_li += `<li onclick="test1_c(${alll})">${data[i].article_title}</li><hr>`;
+                                                // console.log(cit_li);
+                                                console.log(alll)
+                                            };
+                                            let Mi = document.getElementById("mid_");
+
+                                            let plz = "";
+                                            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited"><ul class="c_list">${cited_li}</ul></section><section id="stn">${a}</section><section id="r_cition"><ul class="c_list">${cit_li}</ul></section></section></section>`;
+
+                                            Mi.innerHTML=(plz+"");
+                    
+                                        } else {
+                                            for(let i=0;i<data.length;i++){
+                    
+                                                alll = `'${data[i].article_title}','${data[i].article_id}','${data[i].link}','${data[i].author_name}','${data[i].reg_date}','${data[i].citated_count}','${data[i].category}','${data[i].keyword}','${data[i].abstract}'`;
+                                                cited_li += `<li onclick="test1_c(${alll})">${data[i].article_title}</li><hr>`;
+                                                // console.log(cit_li);
+                                                console.log(alll)
+                                            };
+                                            let Mi = document.getElementById("mid_");
+
+                                            let plz = "";
+                                            plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="l_cited"><ul class="c_list">${cited_li}</ul></section><section id="stn">${a}</section><section id="r_cition"><ul class="c_list">${cit_li}</ul></section></section></section>`;
+
+                                            Mi.innerHTML=(plz+"");
+                                        }
+                                    },
+                                    error : function() {
+                                    }
+                                });
+                                // let Mi = document.getElementById("mid_");
+
+                                // let plz = "";
+                                // plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${d}</li><li>${f} 회</li><li>${e} 년</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><section id="stn">${a}</section><section id="r_cition"><ul id="c_list">${cit_li}</ul></section></section></section>`;
+
+                                // Mi.innerHTML=(plz+"");
+                            }
+                        },
+                        error : function() {
+                        }
+                    });
+                    
+                }
+
+            </script>
+            <!-- <script>
+                    
+                function test1_t(a,b,c,d,e,f,g,h,i){
+                    // alert(a);
+
+                    let Mi = document.getElementById("mid_");
+
+                    let plz = "";
+                    plz += `<section id="mid_title"><div>${a}</div></section><section><ul id="mid_category"><li style="margin-left: 0.1%;">${g}</li><li>${c}</li><li>${d} 년</li><li>${e} 회</li></ul></section><section class="in"><div id="mid_detail">초록</div><img src="../images/img_bar.png" alt="" id="mid_bar"><p id="mid_green">${i}</p></section><br><section class="in"><div id="mid_detail">키워드</div><p id="mid_category2">${h}</p></section><br><section class="in"><div id="mid_detail">인용구조</div><img src="../images/img_bar.png" alt="" id="mid_bar"><section id="in"><div>여기에 인용구조 띄워줄꺼임</div><section id="l_cited">1</section><section id="stn">${b}</section><section id="r_cition">3</section></section></section>`;
+
+                    Mi.innerHTML=(plz+"");
+                }
+            </script> -->
+
+            <!-- <label for="top_searchData">-</label> -->
+            <!-- 로그인 후 페이지 -->
+            <!-- <section>
+                <section id="top_searchData" class="Top">검색 기록</section>
+                <section id="top_searchData" class="Top" style="color: #7E36B4; font-weight:bolder; margin-left: 0%; padding-right: 1%; width: auto; font-size: 2.2vh;">▽ </section>
+            </section> -->
+    
+            <section class="Top" id="top_loginJoin">
+                <p id="username"><%=name%> 님  </p><a id="logout" href="http://127.0.0.1:5500/window_nodejs/public/main.html" style="text-decoration:none">로그아웃</a>
+        </section>
+            </section>
+        
+        </section>
+    
+        <section class="Main">
+            <section class="Lef">
+                <section id="lef_top">
+                    <button class="btn" id="lef_btn" style="margin-left: 2%;">추천 논문</button><button id="lef_btn" style="width: auto;">|</button> <button class="btn" id="lef_btn">새로운 논문</button>
+                    <button id="lef_btn" style="width: auto;">|</button><button class="btn" id="lef_btn">검색 목록</button>
+                </section>
+    
+                <section id="lef_">
+
+
+    
+                </section>
+            </section>
+    
+    
+            <section class="Mid">
+                <section id="mid_top">
+                    <span>제목</span>
+                </section>
+    
+                <section id="mid_">
+                    <!-- <li> -->
+                        <section id="mid_title">
+                            <div>논문이름쓰세요쓰세요쓰세요쓰세요쓰세요</div>
+                        </section>
+        
+        
+                        <section>
+                            <ul id="mid_category">
+                                <li style="margin-left: 0.1%;">카테고리</li>
+                                <li>저자</li>
+                                <li>인용횟수</li>
+                                <li>발행일</li>
+                            </ul>
+                        </section>
+        
+                        <section class="in">
+                            <div id="mid_detail">초록</div>
+                            <img src="images/img_bar.png" alt="" id="mid_bar">
+    
+                            <p id="mid_green">
+                                초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록
+                                초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록초록
+                            </p>
+                        </section>
+                        <br>
+        
+                        <section class="in">
+                            <div id="mid_detail">키워드</div>
+    
+                            <!-- 이거 하이퍼링크 되는애로 고치면 좋은데 -->
+                            <p id="mid_category2">
+                                넣어보던가야러야ㅓㄻ너랮ㄷ먀ㅓ린ㅇ렁나러ㅜ;ㅁ넝올;홰ㅑ도ㅓ미ㅐㅜ우팽;ㄴ뭉;ㅑㅐ로ㅓㅐㅑㅁㅈ더ㅡㅑ러ㅣㄴ어린랴ㅓㅣㅁ냐댊ㄴ
+                            </p>
+                        </section>
+                        <br>
+                        <section class="in">
+                            <div id="mid_detail">인용구조</div>
+                            <img src="images/img_bar.png" alt="" id="mid_bar">
+                            <section id="in">
+                                <div>여기에 인용구조 띄워줄꺼임</div>
+                                <section id="l_cited">1</section>
+                                <section id="stn">2</section>
+                                <section id="r_cition">3</section>
+                            </section>
+                        </section>
+                    <!-- </li> -->
+    
+                </section>
+            </section>
+    
+    
+            <section class="Rei">
+                <!-- <img src="images/bookmark.png" onclick="" id="bookmark">
+                <img src="images/link.png" onclick="" id="link"> -->
+                <section id="rei_memo">
+                    <section id="memo_title">메모보기</section>
+                    <section id="memo_text"><input type="text" id="memo_text_in"></section>
+                    <section id="memo_submit"><input type="submit" id="memo_submit_btn"></section>
+                </section>
+    
+                <section id="folder1">
+                    <section>
+                        <section id="folder_title">폴더 3 이름 쨔라란~</section>
+                        <section id="folder_title" class="Top" style="font-weight:bolder; margin-left: 0%; padding-right: 5%; width: 5%; font-size: 2.2vh;">▽ </section>
+                    </section>
+    
+                    <section id="folder_open" >
+                        <section>
+                            <ul id="f_result">
+                                <li style="margin-left: 0.1%;">카테고리</li>
+                                <li>학회</li>
+                                <li>등록일자</li>
+                                <li>인용횟수</li>
+                            </ul>
+                        </section>
+                        <br>
+                        <p id="f_name">                            
+                            dfmds
+                        </p>
+                    </section>
+                    <!-- ///// -->
+                    <section>
+                        <section id="folder_title">폴더 3 이름 쨔라란~</section>
+                        <section id="folder_title" class="Top" style="font-weight:bolder; margin-left: 0%; padding-right: 5%; width: 5%; font-size: 2.2vh;">▽ </section>
+                    </section>
+    
+                    <section id="folder_open" >
+                        <section>
+                            <ul id="f_result">
+                                <li style="margin-left: 0.1%;">카테고리</li>
+                                <li>학회</li>
+                                <li>등록일자</li>
+                                <li>인용횟수</li>
+                            </ul>
+                        </section>
+                        <br>
+                        <p id="f_name">                            
+                            dfmds
+                        </p>
+                    </section>
+                </section>
+    
+            </section>
+        </section>
+        <form id="aaa" action="http://222.102.104.70:3000/main" method="GET">
+            <input type="text" name="ser" id="w" style="display: none;">
+            <input type="submit" value="검색" style="display: none;">
+        </form>
+
+
+    <script>
+
+
+
+        function search() {
+            document.getElementById('aaa').submit();
+        }
+
+        function sub(){
+            let k = document.getElementById("top_search").value;
+            // alert("내용 : "+k);
+            // alert(k+"1");
+            document.getElementById('w').setAttribute("value",`${k}`);
+            // alert(k+"2");
+            search();
+            // alert(k+"3");
+        }
+
+
+
+
+
+
+
+
+        /**********LEF**********/ 
+
+        // var iframe = document.getElementById('ifLef').contentWindow; 
+
+        // function test() {
+
+        //     let k = document.getElementById("top_search").value;
+
+        //     iframe.sub(`${k}`);
+        //     iframe.search();
+        //     // iframe.location.reload();
+
+        // }
+
+        /**********MID**********/ 
+
+        // let check=0;
+        // let he="";
+
+        // window.addEventListener('message', handleDocHeightMsg, false); 
+
+        // function handleDocHeightMsg(eventObj) { 
+
+        //     if(check == 0){
+        //         he = eventObj.data;
+        //         check = 1;
+        //     }else{
+        //         test_m(`${he}`,`${eventObj.data}`);
+        //     }
+            
+        // }
+
+        // var iframe_m = document.getElementById('ifMid').contentWindow; 
+
+        // function test_m(k,kk) {
+
+        //     iframe_m.sub(k,kk);
+        //     iframe_m.search();
+
+        // }
+////////////////////////
+
+        // const searchb = document.querySelector('#top_searchData');
+        // searchb.addEventListener('click',function(){
+        //     let k = parent.document.getElementById("top_search").value;
+        //     iframe.sub(`${k}`);
+        //     iframe.search();
+        //     iframe.location.reload();
+        // });
+
+        // let st = document.getElementById("top_search").value;
+
+        // searchv = function(){
+        //     parent.document.getElementById("top_search").value;
+        //     st = ifLef  
+        // }
+
+    </script>
+</body>
+</html>

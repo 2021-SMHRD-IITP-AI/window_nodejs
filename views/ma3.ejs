@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/maincs.css">
+    <link rel="stylesheet" href="css/maincs3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
@@ -30,10 +30,10 @@
         
                 <section class="Top" id="top_loginJoin">
                     
-                    <input type="button" onclick="location.href='http://121.147.52.212:3000/logout'" id="top_login" value="로그아웃" class="Top" style="margin-right: 2%;">
+                    <input type="button" onclick="location.href='http://222.102.104.70:3000/logout'" id="top_login" value="로그아웃" class="Top" style="margin-right: 2%;">
                     <input type="button" name="" id="top_login" value="  |  " class="Top">
                     <p id="top_login" style="font-weight: bold; color: black;">님</p>
-                    <p id="top_login_n" style="font-weight: bold; color: black;"><%=name%></p>
+                    <p id="username" style="font-weight: bold; color: black;"><%=name%></p>
                 </section>
 
 
@@ -218,7 +218,7 @@
             let k = document.getElementById("top_search").value;
             $.ajax({
                 type :"get" ,
-                url : "http://121.147.52.212:3000/sealist",
+                url : "http://222.102.104.70:3000/sealist",
                 data : {sea : k},
                 dataType : 'JSON',
                 success : function(data) {
@@ -248,7 +248,7 @@
             let k = document.getElementById("top_search").value;
             $.ajax({
                 type :"get" ,
-                url : "http://121.147.52.212:3000/sealist",
+                url : "http://222.102.104.70:3000/sealist",
                 data : {sea : k},
                 dataType : 'JSON',
                 success : function(data) {
@@ -316,12 +316,12 @@
         // 북마크 창 띄우기
         function openPopup(){
             let na = document.getElementById("top_login_n").innerHTML;
-            // window.open(`http://222.102.104.85:3000/mark?id=${na}`, "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=700, height=700, left=0, top=0" );
-            window.open(`http://121.147.52.212:3000/mark?`, "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=700, height=700, left=0, top=0" );
+            // window.open(`http://222.102.104.70:3000/mark?id=${na}`, "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=700, height=700, left=0, top=0" );
+            window.open(`http://222.102.104.70:3000/mark?`, "new", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=700, height=700, left=0, top=0" );
 
             var form = document.createElement("form");
             form.setAttribute("method", "post");
-            form.setAttribute("action", 'http://222.102.104.85:3000/mark');
+            form.setAttribute("action", 'http://222.102.104.70:3000/mark');
             form.setAttribute("target", "new");
             
             var input = document.createElement('input');
