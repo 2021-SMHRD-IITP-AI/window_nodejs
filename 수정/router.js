@@ -25,15 +25,6 @@ router.post("/Join", function(request, response){
         }
 
     })
-    for(let temp = 1; temp<4; temp++){
-        let temp2 = ("폴더"+temp);
-        console.log(temp2);
-        let sql1 = "insert into folder values (?,?,?);"
-        conn.query(sql1,[user_id, temp, temp2], function(err,row){
-            console.log(user_id+temp+temp2+" ");
-        })
-        }
-
     conn.end();
 });
 
@@ -53,8 +44,7 @@ router.post("/Login", function(request, response){
                     request.session.user = {
                         "name" : row[i].user_name
                     }
-                    response.render("ma3",{
-                        id : row[i].user_id,
+                    response.render("ma2",{
                         name : row[i].user_name
                     })
                     
@@ -71,34 +61,6 @@ router.post("/Login", function(request, response){
             response.redirect("http://127.0.0.1:5500/public/LoginF.html")// 로그인 실패시 로그인창 이동
         }
     });
-    conn.end();
-});
-
-router.get("/main", function(request, response){
-    let user_id = request.query.id;
-
-    conn.connect();
-
-    let sql = "select * from login where user_id = ?";
-
-    conn.query(sql, [user_id], function(err,row){
-        console.log(row+"");
-        if(row != ""){
-            request.session.user = {
-                "name" : row[0].user_name,
-            }
-
-            response.render("ma3",{
-                id : row[0].user_id,
-                name : row[0].user_name,
-            })
-        }else{
-            response.render("ma3",{
-                name : "no"
-            })
-
-        }
-    })
     conn.end();
 });
 
@@ -146,14 +108,14 @@ router.post("/PwSelector", function(request, response){//보류
             console.log(err);
             for(let i = 0; i < row.length; i++){
                 if(user_id == row[i].user_id && user_email==row[i].user_email){
-                    request.session.user ={
-                        "id" : row[i].user_id
-                    }
-                    response.render("PwUpdate",{
-                        id : row[i].user_id
-                    })
+                    // request.session.user={
+                    //     "id" : row[i].user_id
+                    // }
+                    // response.render("PwUpdate",{
+                    //     id : row[i].user_id
+                    // })
 
-                    // response.redirect("http://127.0.0.1:5502/window_nodejs/public/PwUpdate.html")
+                    response.redirect("http://127.0.0.1:5500/public/PwUpdate.html")
                 }else{
                     //알럿창으로 다시 입력 하게 하거나 회원가입 창으로 넘어가게 함.
                     response.redirect("http://127.0.0.1:5500/public/PwSelectorF.html")
@@ -167,27 +129,16 @@ router.post("/PwSelector", function(request, response){//보류
 })
 
 router.post("/PwUpdate",function(request,response){
-    let user_id = request.session.user
+    let user_id = request.body.id;
     let user_pw = request.body.pw;
-
-    console.log(user_id.id);
-    
-    console.log(user_pw);
 
     conn.connect();//mysql연결
 
     let sql ="update login set user_pw = ? where user_id = ?";
 
-    conn.query(sql,[user_pw, user_id.id] ,function(err, row){
+    conn.query(sql,[user_pw, user_id] ,function(err, row){
         if(!err){
-            request.session.destroy(function(){
-                request.session;
-            })
-<<<<<<< HEAD
-        response.redirect("http://127.0.0.1:5502/window_nodejs/public/Login.html")
-=======
         response.redirect("http://127.0.0.1:5500/public/Login.html")
->>>>>>> 79bbc193c3694836d8b497106301d1be1f3564c4
         }
         else{
             console.log("수정 실패"+err);
@@ -196,21 +147,21 @@ router.post("/PwUpdate",function(request,response){
     conn.end();
 });
 
-// router.get("/main", function(request, response){
-//     let ser = request.query.ser;
-//     conn.connect(); //mysql 연결
-//     let keyword = "%" + ser + "%";
+router.get("/main", function(request, response){
+    let ser = request.query.ser;
+    conn.connect(); //mysql 연결
+    let keyword = "%" + ser + "%";
 
-//     let sql = "select * from article where article_title like ?";
-//     conn.query(sql, [keyword], function (err, row) {
-//         console.log(row);
-//         response.render("ma2", {
-//             in_row : row
-//         })
-//     })
+    let sql = "select * from article where article_title like ?";
+    conn.query(sql, [keyword], function (err, row) {
+        console.log(row);
+        response.render("ma", {
+            in_row : row
+        })
+    })
 
-//     conn.end();
-// })
+    conn.end();
+})
 
 router.get("/sealist", function(request, response){
 
@@ -224,7 +175,7 @@ router.get("/sealist", function(request, response){
         // console.log(row);
         response.send(row);
     })
-    conn.end();
+
 })
 
 router.get("/cit_list", function(request, response){
@@ -316,54 +267,5 @@ router.get("/REI", function(request, response){
 
     });
 })
-
-router.get("/bookon", function(request, response){
-
-    let id = request.query.id;
-    let folder = request.query.folder;
-    let target = request.query.target;
-
-    //  conn.connect(); //mysql 연결
-    // let keyword = "%" + sea + "%";
-
-    //  let sql = "select * from article where article_title like ?";
-    // conn.query(sql, [keyword], function (err, row) {
-    //      // console.log(row);
-    //     response.send(row);
-    // })
-    // conn.end();
-
-})
-
-router.post("/mark", function(request, response){
-    let id=request.body.id;
-    // console.log(`${id}`);
-    conn.connect();
-
-    let sql = "select * from folder where user_id = ?";
-    conn.query(sql, [id], function(err,row){
-        
-            response.render("book_pop",{
-                in_row: row
-            })
-
-        
-    })
-    conn.end();
-
-});
-
-router.get("/Logout", function(request, response){
-
-    request.session.destroy(function(){
-        request.session;
-    })
-
-    // response.render("ma2",{
-    //     name : "no"
-    // })
-    response.redirect("http://127.0.0.1:5502/window_nodejs/public/main.html")
-
-});
 
 module.exports = router;

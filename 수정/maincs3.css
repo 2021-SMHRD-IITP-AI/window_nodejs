@@ -339,13 +339,14 @@ body{
 }
 #username{
     position: relative;
-    left: 1143px;
-    top: 20px;
+    left: 1150px;
+    top: 18px;
     font-size: 1.8vh;
 }
 #in{
     margin-top: 1.5%;
 }
+
 #l_cited, #stn, #r_cition{
     width: 33%;
     float: left;

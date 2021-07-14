@@ -1,0 +1,11 @@
+{
+	"articleTitle": "Modularity and Community Structure in Networks",
+	"articleId": 553446304,
+	"link": "https://academic.naver.com/article.naver?doc_id=553446304",
+	"authorName": "M. E. J. Newman",
+	"citatedCount": "4412",
+	"category": "자연과학> 자연과학일반, 공학> 공학일반",
+	"regDate": 2006,
+	"keyword": "clustering, partitioning, modules, metabolic network, social network",
+	"abstract": "Many networks of interest in the sciences, including social networks, computer networks, and metabolic and regulatory networks, are found to divide naturally into communities or modules. The problem of detecting and characterizing this community structure is one of the outstanding issues in the study of networked systems. One highly effective approach is the optimization of the quality function known as `modularity` over the possible divisions of a network. Here I show that the modularity can be expressed in terms of the eigenvectors of a characteristic matrix for the network, which I call the modularity matrix, and that this expression leads to a spectral algorithm for community detection that returns results of demonstrably higher quality than competing methods in shorter running times. I illustrate the method with applications to several published network data sets."
+}
