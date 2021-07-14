@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section style="text-align: center; width: 98vw; height: 50vh; margin-top: 30vh;">
+    <!-- <form action="" style="text-align: center; width: 98vw; height: 50vh; margin-top: 30vh;"> -->
+        <p style="margin: 0%; padding: 0%; font-size: 2.7vw ;  margin-left: -25%; color: #212424;">북마크 폴더 선택 :</p>
+        <!-- <br> -->
+        <select name="" id="sel" aria-dropeffect="" style="border-bottom-color: black; width: 48vw; font-size: 3vw; height: 7vw; padding-left: 2vw; margin-top: 2%;">
+            <option value="none" hidden style="font-size: 2.8vw;">폴더 선택</option>
+            <%if(in_row != undefined){%>
+                    <option value="folder1" style="font-size: 2.8vw;"><%=in_row[0].forder_name%></option>
+                    <option value="folder2" style="font-size: 2.8vw;"><%=in_row[1].forder_name%></option>
+                    <option value="folder3" style="font-size: 2.8vw;"><%=in_row[2].forder_name%></option>
+            <% } %>
+        </select>
+        <br>
+        <input type="button" value="저장" onclick="send()" style="background-color: darkgrey; color: #fff; margin-top: 2%; border: 0px; width: 48vw; height:6.3vw; font-weight: bold; font-size: 2.6vw;">
+    <!-- </form> -->
+    </section>
+    <script>
+        var tb = document.getElementById("sel");
+		// var tbIndex = document.getElementById("sel").options.selectedIndex;
+		
+		// alert(tb.options[tbIndex].value+"");
+
+        document.getElementById('w').setAttribute("value",`${k}`);
+        function send() {
+            var tbIndex = document.getElementById("sel").options.selectedIndex;
+            opener.parent.book_on(tb.options[tbIndex].text);
+            window.close();
+        }
+
+    </script>
+</body>
+</html>

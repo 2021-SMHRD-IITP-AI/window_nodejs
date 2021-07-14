@@ -25,6 +25,15 @@ router.post("/Join", function(request, response){
         }
 
     })
+    for(let temp = 1; temp<4; temp++){
+        let temp2 = ("폴더"+temp);
+        console.log(temp2);
+        let sql1 = "insert into folder values (?,?,?);"
+        conn.query(sql1,[user_id, temp, temp2], function(err,row){
+            console.log(user_id+temp+temp2+" ");
+        })
+        }
+
     conn.end();
 });
 
@@ -44,7 +53,8 @@ router.post("/Login", function(request, response){
                     request.session.user = {
                         "name" : row[i].user_name
                     }
-                    response.render("ma2",{
+                    response.render("ma3",{
+                        id : row[i].user_id,
                         name : row[i].user_name
                     })
                     
@@ -61,6 +71,34 @@ router.post("/Login", function(request, response){
             response.redirect("http://127.0.0.1:5502/window_nodejs/public/LoginF.html")// 로그인 실패시 로그인창 이동
         }
     });
+    conn.end();
+});
+
+router.get("/main", function(request, response){
+    let user_id = request.query.id;
+
+    conn.connect();
+
+    let sql = "select * from login where user_id = ?";
+
+    conn.query(sql, [user_id], function(err,row){
+        console.log(row+"");
+        if(row != ""){
+            request.session.user = {
+                "name" : row[0].user_name,
+            }
+
+            response.render("ma3",{
+                id : row[0].user_id,
+                name : row[0].user_name,
+            })
+        }else{
+            response.render("ma3",{
+                name : "no"
+            })
+
+        }
+    })
     conn.end();
 });
 
@@ -151,21 +189,21 @@ router.post("/PwUpdate",function(request,response){
     conn.end();
 });
 
-router.get("/main", function(request, response){
-    let ser = request.query.ser;
-    conn.connect(); //mysql 연결
-    let keyword = "%" + ser + "%";
+// router.get("/main", function(request, response){
+//     let ser = request.query.ser;
+//     conn.connect(); //mysql 연결
+//     let keyword = "%" + ser + "%";
 
-    let sql = "select * from article where article_title like ?";
-    conn.query(sql, [keyword], function (err, row) {
-        console.log(row);
-        response.render("ma2", {
-            in_row : row
-        })
-    })
+//     let sql = "select * from article where article_title like ?";
+//     conn.query(sql, [keyword], function (err, row) {
+//         console.log(row);
+//         response.render("ma2", {
+//             in_row : row
+//         })
+//     })
 
-    conn.end();
-})
+//     conn.end();
+// })
 
 router.get("/sealist", function(request, response){
 
@@ -179,28 +217,6 @@ router.get("/sealist", function(request, response){
         // console.log(row);
         response.send(row);
     })
-
-    let sql2 = "insert into login values(?, ?, ?, ?, now())";
-    
-    conn.query(sql2,[user_id, user_pw, user_email, user_name], function(err,row){
-        if(!err){
-            console.log(user_name+"님이 회원가입 하였습니다.");
-            response.redirect("http://222.102.104.85:5500/public/main.html");//로그인전 메인페이지 이동
-        }else{
-            console.log("누군가 회원가입에 실패하였습니다.");
-            response.redirect("http://222.102.104.85:5500/public/Join.html");
-        }
-
-    })
-
-    for(let temp = 1; temp<4; temp++){
-        let temp2 = ("폴더"+temp);
-        console.log(temp2);
-        let sql1 = "insert into folder values (?,?,?);"
-        conn.query(sql1,[user_id, temp, temp2], function(err,row){
-            console.log(user_id+temp+temp2+" ");
-        })
-        }
     conn.end();
 })
 
@@ -245,13 +261,52 @@ router.get("/REI", function(request, response){
     });
 })
 
+router.get("/bookon", function(request, response){
+
+    let id = request.query.id;
+    let folder = request.query.folder;
+    let target = request.query.target;
+
+    //  conn.connect(); //mysql 연결
+    // let keyword = "%" + sea + "%";
+
+    //  let sql = "select * from article where article_title like ?";
+    // conn.query(sql, [keyword], function (err, row) {
+    //      // console.log(row);
+    //     response.send(row);
+    // })
+    // conn.end();
+
+})
+
+router.post("/mark", function(request, response){
+    let id=request.body.id;
+    // console.log(`${id}`);
+    conn.connect();
+
+    let sql = "select * from folder where user_id = ?";
+    conn.query(sql, [id], function(err,row){
+        
+            response.render("book_pop",{
+                in_row: row
+            })
+
+        
+    })
+    conn.end();
+
+});
+
 router.get("/Logout", function(request, response){
 
     request.session.destroy(function(){
         request.session;
     })
 
-    response.redirect("http://127.0.0.1:5502/window_nodejs/public/main.html")
+    response.render("ma2",{
+        name : "no"
+    })
+    // response.redirect("http://127.0.0.1:5502/window_nodejs/public/main.html")
 
 });
 
