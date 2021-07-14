@@ -183,11 +183,7 @@ router.post("/PwUpdate",function(request,response){
             request.session.destroy(function(){
                 request.session;
             })
-<<<<<<< HEAD
         response.redirect("http://127.0.0.1:5502/window_nodejs/public/Login.html")
-=======
-        response.redirect("http://127.0.0.1:5500/public/Login.html")
->>>>>>> 79bbc193c3694836d8b497106301d1be1f3564c4
         }
         else{
             console.log("수정 실패"+err);
